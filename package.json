@@ -1,0 +1,68 @@
+{
+  "name": "react-music",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@material-ui/core": "^4.1.3",
+    "@material-ui/icons": "^3.0.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "axios": "^0.21.1",
+    "connected-react-router": "^6.4.0",
+    "electron": "^5.0.5",
+    "electron-builder": "^21.1.5",
+    "history": "^4.9.0",
+    "material-ui-flat-pagination": "^3.2.0",
+    "moment": "^2.24.0",
+    "query-string": "^6.8.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-lines-ellipsis": "^0.14.1",
+    "react-moment": "^0.9.2",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
+  },
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "start-electron": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "build": "react-scripts build",
+    "build-electron": "react-scripts build && mkdir build/src && cp -r electron/. build/electron && cp -r src/shared/. build/src/shared && cp -r server/. build/server",
+    "package": "electron-builder build --mac --win -c.extraMetadata.main=build/electron/main.js --publish never",
+    "package-mac": "electron-builder build --mac -c.extraMetadata.main=build/electron/main.js --publish never",
+    "package-win": "electron-builder build --win -c.extraMetadata.main=build/electron/main.js --publish never",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": "/",
+  "productName": "V Music",
+  "build": {
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "publish": {
+      "provider": "github",
+      "repo": "electron-react",
+      "owner": "vidon"
+    }
+  }
+}
